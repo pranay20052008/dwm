@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weboard — GitHub Project Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="app">
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <div class="logo">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          Weboard
+        </div>
+        <div class="repo-pill">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+          myorg / awesome-project
+        </div>
+        <span class="badge badge-green">main</span>
+        <span class="badge badge-gray">v2.4.1</span>
+      </div>
+      <div class="topbar-right">
+        <button class="btn-icon" title="Notifications">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        </button>
+        <div class="avatar">YO</div>
+      </div>
+    </header>
+
+    <div class="body">
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <nav>
+          <div class="nav-section">Project</div>
+          <a class="nav-item active" href="#" onclick="showView('board')">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+            Kanban board
+          </a>
+          <a class="nav-item" href="#" onclick="showView('issues')">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Issues
+            <span class="nav-badge">24</span>
+          </a>
+          <a class="nav-item" href="#" onclick="showView('prs')">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 0 1 2 2v7"/><line x1="6" y1="9" x2="6" y2="21"/></svg>
+            Pull requests
+            <span class="nav-badge">7</span>
+          </a>
+          <a class="nav-item" href="#" onclick="showView('ci')">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            CI / Actions
+          </a>
+          <a class="nav-item" href="#" onclick="showView('branches')">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
+            Branches
+          </a>
+          <a class="nav-item" href="#" onclick="showView('milestones')">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+            Milestones
+          </a>
+          <div class="nav-section">Config</div>
+          <a class="nav-item" href="#">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+            GitHub token
+          </a>
+          <a class="nav-item" href="#">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+            Settings
+          </a>
+        </nav>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <main class="main">
+
+        <!-- KANBAN VIEW -->
+        <div id="view-board" class="view active">
+          <div class="toolbar">
+            <div class="toolbar-left">
+              <span class="view-title">Kanban board</span>
+              <div class="tab-group">
+                <button class="tab active">All</button>
+                <button class="tab">My issues</button>
+                <button class="tab">PRs</button>
+              </div>
+            </div>
+            <div class="toolbar-right">
+              <button class="btn-secondary">+ New issue</button>
+              <button class="btn-secondary">Filter</button>
+            </div>
+          </div>
+
+          <div class="stat-row">
+            <div class="stat-card">
+              <div class="stat-label">Open issues</div>
+              <div class="stat-value">24</div>
+              <div class="stat-sub">+3 this week</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Pull requests</div>
+              <div class="stat-value">7</div>
+              <div class="stat-sub">2 awaiting review</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">CI passing</div>
+              <div class="stat-value green">91%</div>
+              <div class="stat-sub">11 / 12 workflows</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Milestone v3.0</div>
+              <div class="stat-value">62%</div>
+              <div class="stat-sub">
+                <div class="progress-bar"><div class="progress-fill" style="width:62%"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="board" id="board">
+
+            <div class="col" id="col-backlog" ondragover="onOver(event)" ondrop="onDrop(event,'col-backlog')">
+              <div class="col-header">
+                <span class="col-dot dot-gray"></span>
+                <span class="col-title">Backlog</span>
+                <span class="col-count" id="cnt-backlog">4</span>
+              </div>
+              <div class="card" draggable="true" ondragstart="onDrag(event)" id="c1">
+                <div class="card-ms">v3.0</div>
+                <div class="card-title">Add dark mode support to CLI output</div>
+                <div class="card-meta">
+                  <span class="chip chip-gray">enhancement</span>
+                  <span class="avatar-sm">TS</span>
+                </div>
+              </div>
+              <div class="card" draggable="true" ondragstart="onDrag(event)" id="c2">
+                <div class="card-ms">v3.0</div>
+                <div class="card-title">Write migration guide for v2 → v3</div>
+                <div class="card-meta">
+                  <span class="chip chip-gray">docs</span>
+                  <span class="avatar-sm">LM</span>
+                </div>
+              </div>
+              <div class="card" draggable="true" ondragstart="onDrag(event)" id="c3">
+                <div class="card-title">Triage stale issues from Q1</div>
+                <div class="card-meta">
+                  <span class="chip chip-gray">triage</span>
+                  <span class="avatar-sm">YO</span>
+                </div>
+              </div>
+              <div class="card" draggable="true" ondragstart="onDrag(event)" id="c4">
+                <div class="card-title">Evaluate zod v4 upgrade path</div>
+                <div class="card-meta">
+                  <span class="chip chip-gray">research</span>
+                  <span class="avatar-sm">TS</span>
+                </div>
+              </div>
+              <button class="col-add">+ Add card</button>
+            </div>
+
+            <div class="col" id="col-inprogress" ondragover="onOver(event)" ondrop="onDrop(event,'col-inprogress')">
+              <div class="col-header">
+                <span class="col-dot dot-amber"></span>
+                <span class="col-title">In progress</span>
+                <span class="col-count" id="cnt-inprogress">3</span>
+              </div>
+              <div class="card" draggable="true" ondragstart="onDrag(event)" id="c5">
+                <div class="card-ms">v3.0</div>
+                <div class="card-title">Refactor plugin loader to support ESM</div>
+                <div class="card-meta">
+                  <span class="chip chip-blue">#214 PR open</span>
+                  <span class="chip chip-amber">feat/esm-loader</span>
+                  <span class="avatar-sm">LM</span>
+                </div>
+              </div>
+              <div class="card" draggable="true" ondragstart="onDrag(event)" id="c6">
+                <div class="card-title">Fix memory leak in event bus</div>
+                <div class="card-meta">
+                  <span class="chip chip-blue">#217 PR open</span>
+                  <span class="chip chip-red">CI failing</span>
+                  <span class="avatar-sm">TS</span>
+                </div>
+              </div>
+              <div class="card" draggable="true" ondragstart="onDrag(event)" id="c7">
+                <div class="card-title">Add rate limiting to REST adapter</div>
+                <div class="card-meta">
+                  <span class="chip chip-gray">feature</span>
+                  <span class="chip chip-amber">feat/rate-limit</span>
+                  <span class="avatar-sm">YO</span>
+                </div>
+              </div>
+              <button class="col-add">+ Add card</button>
+            </div>
+
+            <div class="col" id="col-review" ondragover="onOver(event)" ondrop="onDrop(event,'col-review')">
+              <div class="col-header">
+                <span class="col-dot dot-blue"></span>
+                <span class="col-title">In review</span>
+                <span class="col-count" id="cnt-review">2</span>
+              </div>
+              <div class="card" draggable="true" ondragstart="onDrag(event)" id="c8">
+                <div class="card-ms">v3.0</div>
+                <div class="card-title">Bump peer deps: support Node 22</div>
+                <div class="card-meta">
+                  <span class="chip chip-blue">#210 PR</span>
+                  <span class="chip chip-green">CI passing</span>
+                  <span class="avatar-sm">LM</span>
+                </div>
+              </div>
+              <div class="card" draggable="true" ondragstart="onDrag(event)" id="c9">
+                <div class="card-title">Update README with new config options</div>
+                <div class="card-meta">
+                  <span class="chip chip-blue">#212 PR</span>
+                  <span class="chip chip-green">CI passing</span>
+                  <span class="avatar-sm">TS</span>
+                </div>
+              </div>
+              <button class="col-add">+ Add card</button>
+            </div>
+
+            <div class="col" id="col-done" ondragover="onOver(event)" ondrop="onDrop(event,'col-done')">
+              <div class="col-header">
+                <span class="col-dot dot-green"></span>
+                <span class="col-title">Done</span>
+                <span class="col-count" id="cnt-done">3</span>
+              </div>
+              <div class="card" draggable="true" ondragstart="onDrag(event)" id="c10">
+                <div class="card-ms">v2.4.1</div>
+                <div class="card-title">Patch XSS in template renderer</div>
+                <div class="card-meta">
+                  <span class="chip chip-red">security</span>
+                  <span class="chip chip-green">CI passing</span>
+                  <span class="avatar-sm">YO</span>
+                </div>
+              </div>
+              <div class="card" draggable="true" ondragstart="onDrag(event)" id="c11">
+                <div class="card-title">Publish v2.4.1 to npm</div>
+                <div class="card-meta">
+                  <span class="chip chip-gray">release</span>
+                  <span class="avatar-sm">LM</span>
+                </div>
+              </div>
+              <div class="card" draggable="true" ondragstart="onDrag(event)" id="c12">
+                <div class="card-title">Set up GitHub Actions caching for CI</div>
+                <div class="card-meta">
+                  <span class="chip chip-green">CI passing</span>
+                  <span class="avatar-sm">TS</span>
+                </div>
+              </div>
+              <button class="col-add">+ Add card</button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ISSUES VIEW -->
+        <div id="view-issues" class="view">
+          <div class="toolbar">
+            <div class="toolbar-left"><span class="view-title">Issues</span></div>
+            <div class="toolbar-right"><button class="btn-secondary">+ New issue</button></div>
+          </div>
+          <div class="panel">
+            <table class="issues-table">
+              <thead><tr><th></th><th>Title</th><th>Labels</th><th>Milestone</th><th>Assignee</th><th>Updated</th></tr></thead>
+              <tbody>
+                <tr><td><span class="status-dot open"></span></td><td>Add dark mode support to CLI output</td><td><span class="chip chip-gray">enhancement</span></td><td>v3.0</td><td><span class="avatar-sm">TS</span></td><td class="muted">2d ago</td></tr>
+                <tr><td><span class="status-dot open"></span></td><td>Fix memory leak in event bus</td><td><span class="chip chip-red">bug</span></td><td>—</td><td><span class="avatar-sm">TS</span></td><td class="muted">1d ago</td></tr>
+                <tr><td><span class="status-dot open"></span></td><td>Write migration guide for v2 → v3</td><td><span class="chip chip-gray">docs</span></td><td>v3.0</td><td><span class="avatar-sm">LM</span></td><td class="muted">3d ago</td></tr>
+                <tr><td><span class="status-dot open"></span></td><td>Add rate limiting to REST adapter</td><td><span class="chip chip-gray">feature</span></td><td>v3.0</td><td><span class="avatar-sm">YO</span></td><td class="muted">5h ago</td></tr>
+                <tr><td><span class="status-dot closed"></span></td><td>Patch XSS in template renderer</td><td><span class="chip chip-red">security</span></td><td>v2.4.1</td><td><span class="avatar-sm">YO</span></td><td class="muted">1w ago</td></tr>
+                <tr><td><span class="status-dot closed"></span></td><td>Publish v2.4.1 to npm</td><td><span class="chip chip-gray">release</span></td><td>v2.4.1</td><td><span class="avatar-sm">LM</span></td><td class="muted">1w ago</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- PRs VIEW -->
+        <div id="view-prs" class="view">
+          <div class="toolbar">
+            <div class="toolbar-left"><span class="view-title">Pull Requests</span></div>
+          </div>
+          <div class="panel">
+            <table class="issues-table">
+              <thead><tr><th></th><th>Title</th><th>Branch</th><th>CI</th><th>Author</th><th>Updated</th></tr></thead>
+              <tbody>
+                <tr><td><span class="status-dot open"></span></td><td>#214 Refactor plugin loader to support ESM</td><td><span class="chip chip-amber">feat/esm-loader</span></td><td><span class="chip chip-green">passing</span></td><td><span class="avatar-sm">LM</span></td><td class="muted">2h ago</td></tr>
+                <tr><td><span class="status-dot open"></span></td><td>#217 Fix memory leak in event bus</td><td><span class="chip chip-amber">fix/event-bus</span></td><td><span class="chip chip-red">failing</span></td><td><span class="avatar-sm">TS</span></td><td class="muted">1h ago</td></tr>
+                <tr><td><span class="status-dot open"></span></td><td>#210 Bump peer deps: support Node 22</td><td><span class="chip chip-amber">chore/node22</span></td><td><span class="chip chip-green">passing</span></td><td><span class="avatar-sm">LM</span></td><td class="muted">4h ago</td></tr>
+                <tr><td><span class="status-dot open"></span></td><td>#212 Update README with new config options</td><td><span class="chip chip-amber">docs/readme</span></td><td><span class="chip chip-green">passing</span></td><td><span class="avatar-sm">TS</span></td><td class="muted">6h ago</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- CI VIEW -->
+        <div id="view-ci" class="view">
+          <div class="toolbar">
+            <div class="toolbar-left"><span class="view-title">CI / Actions</span></div>
+          </div>
+          <div class="panel">
+            <div class="ci-list">
+              <div class="ci-row"><span class="ci-dot green"></span><div><div class="ci-name">Build & Test (ubuntu-latest)</div><div class="ci-meta">main · 3 min 12s</div></div><span class="chip chip-green">passing</span></div>
+              <div class="ci-row"><span class="ci-dot green"></span><div><div class="ci-name">Build & Test (windows-latest)</div><div class="ci-meta">main · 4 min 02s</div></div><span class="chip chip-green">passing</span></div>
+              <div class="ci-row"><span class="ci-dot red"></span><div><div class="ci-name">Build & Test (fix/event-bus)</div><div class="ci-meta">fix/event-bus · 1 min 44s</div></div><span class="chip chip-red">failing</span></div>
+              <div class="ci-row"><span class="ci-dot green"></span><div><div class="ci-name">Lint & Format</div><div class="ci-meta">main · 42s</div></div><span class="chip chip-green">passing</span></div>
+              <div class="ci-row"><span class="ci-dot green"></span><div><div class="ci-name">Publish to npm</div><div class="ci-meta">v2.4.1 · 1 min 10s</div></div><span class="chip chip-green">passing</span></div>
+              <div class="ci-row"><span class="ci-dot green"></span><div><div class="ci-name">Security audit</div><div class="ci-meta">main · 28s</div></div><span class="chip chip-green">passing</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BRANCHES VIEW -->
+        <div id="view-branches" class="view">
+          <div class="toolbar">
+            <div class="toolbar-left"><span class="view-title">Branches</span></div>
+          </div>
+          <div class="panel">
+            <div class="ci-list">
+              <div class="ci-row"><span class="ci-dot green"></span><div><div class="ci-name">main</div><div class="ci-meta">Default · last commit 2h ago</div></div><span class="badge badge-green">default</span></div>
+              <div class="ci-row"><span class="ci-dot green"></span><div><div class="ci-name">feat/esm-loader</div><div class="ci-meta">3 commits ahead of main</div></div><span class="chip chip-blue">PR #214</span></div>
+              <div class="ci-row"><span class="ci-dot red"></span><div><div class="ci-name">fix/event-bus</div><div class="ci-meta">2 commits ahead of main</div></div><span class="chip chip-red">CI failing</span></div>
+              <div class="ci-row"><span class="ci-dot green"></span><div><div class="ci-name">feat/rate-limit</div><div class="ci-meta">5 commits ahead of main</div></div><span class="chip chip-gray">no PR</span></div>
+              <div class="ci-row"><span class="ci-dot green"></span><div><div class="ci-name">chore/node22</div><div class="ci-meta">1 commit ahead of main</div></div><span class="chip chip-blue">PR #210</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MILESTONES VIEW -->
+        <div id="view-milestones" class="view">
+          <div class="toolbar">
+            <div class="toolbar-left"><span class="view-title">Milestones</span></div>
+          </div>
+          <div class="panel">
+            <div class="milestone-card">
+              <div class="milestone-header">
+                <span class="milestone-name">v3.0</span>
+                <span class="badge badge-amber">in progress</span>
+              </div>
+              <div class="milestone-desc">Major release — ESM support, plugin API overhaul, Node 22</div>
+              <div class="milestone-progress">
+                <div class="progress-bar large"><div class="progress-fill" style="width:62%"></div></div>
+                <span class="muted">62% · 8 open · 13 closed</span>
+              </div>
+            </div>
+            <div class="milestone-card">
+              <div class="milestone-header">
+                <span class="milestone-name">v2.4.1</span>
+                <span class="badge badge-green">complete</span>
+              </div>
+              <div class="milestone-desc">Patch release — security fixes and dep bumps</div>
+              <div class="milestone-progress">
+                <div class="progress-bar large"><div class="progress-fill" style="width:100%"></div></div>
+                <span class="muted">100% · 0 open · 6 closed</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
